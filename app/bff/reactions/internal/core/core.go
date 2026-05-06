@@ -3,7 +3,7 @@ package core
 import (
 	"context"
 
-	"github.com/teamgram/marmota/pkg/metadata"
+	"github.com/teamgram/proto/mtproto/rpc/metadata"
 	"github.com/teamgram/teamgram-server/app/bff/reactions/internal/svc"
 	"github.com/zeromicro/go-zero/core/logx"
 )
