@@ -2,6 +2,7 @@ package core
 
 import (
 	"github.com/teamgram/proto/mtproto"
+	"time"
 )
 
 func (c *ReactionsCore) MessagesGetAvailableReactions(in *mtproto.TLMessagesGetAvailableReactions) (*mtproto.Messages_AvailableReactions, error) {
@@ -16,14 +17,21 @@ func (c *ReactionsCore) MessagesSendReaction(in *mtproto.TLMessagesSendReaction)
 		Updates: []*mtproto.Update{},
 		Users:   []*mtproto.User{},
 		Chats:   []*mtproto.Chat{},
-		Date:    int32(mtproto.Now().Unix()),
+		Date:    int32(time.Now().Unix()),
 		Seq:     0,
 	}).To_Updates()
 	return rUpdates, nil
 }
 
 func (c *ReactionsCore) MessagesGetMessagesReactions(in *mtproto.TLMessagesGetMessagesReactions) (*mtproto.Updates, error) {
-	return mtproto.MakeTLUpdatesEmpty(&mtproto.Updates{}).To_Updates(), nil
+	rUpdates := mtproto.MakeTLUpdates(&mtproto.Updates{
+		Updates: []*mtproto.Update{},
+		Users:   []*mtproto.User{},
+		Chats:   []*mtproto.Chat{},
+		Date:    int32(time.Now().Unix()),
+		Seq:     0,
+	}).To_Updates()
+	return rUpdates, nil
 }
 
 func (c *ReactionsCore) MessagesGetMessageReactionsList(in *mtproto.TLMessagesGetMessageReactionsList) (*mtproto.Messages_MessageReactionsList, error) {
@@ -40,7 +48,7 @@ func (c *ReactionsCore) MessagesSetChatAvailableReactions(in *mtproto.TLMessages
 		Updates: []*mtproto.Update{},
 		Users:   []*mtproto.User{},
 		Chats:   []*mtproto.Chat{},
-		Date:    int32(mtproto.Now().Unix()),
+		Date:    int32(time.Now().Unix()),
 		Seq:     0,
 	}).To_Updates()
 	return rUpdates, nil
@@ -73,7 +81,6 @@ func (c *ReactionsCore) MessagesReportReaction(in *mtproto.TLMessagesReportReact
 func (c *ReactionsCore) MessagesGetTopReactions(in *mtproto.TLMessagesGetTopReactions) (*mtproto.Messages_Reactions, error) {
 	return mtproto.MakeTLMessagesReactions(&mtproto.Messages_Reactions{
 		Reactions: []*mtproto.Reaction{},
-		Period:    0,
 		Hash:      0,
 	}).To_Messages_Reactions(), nil
 }
@@ -81,7 +88,6 @@ func (c *ReactionsCore) MessagesGetTopReactions(in *mtproto.TLMessagesGetTopReac
 func (c *ReactionsCore) MessagesGetRecentReactions(in *mtproto.TLMessagesGetRecentReactions) (*mtproto.Messages_Reactions, error) {
 	return mtproto.MakeTLMessagesReactions(&mtproto.Messages_Reactions{
 		Reactions: []*mtproto.Reaction{},
-		Period:    0,
 		Hash:      0,
 	}).To_Messages_Reactions(), nil
 }
@@ -95,7 +101,7 @@ func (c *ReactionsCore) MessagesSendPaidReaction(in *mtproto.TLMessagesSendPaidR
 		Updates: []*mtproto.Update{},
 		Users:   []*mtproto.User{},
 		Chats:   []*mtproto.Chat{},
-		Date:    int32(mtproto.Now().Unix()),
+		Date:    int32(time.Now().Unix()),
 		Seq:     0,
 	}).To_Updates()
 	return rUpdates, nil
@@ -110,7 +116,7 @@ func (c *ReactionsCore) MessagesGetPaidReactionPrivacy(in *mtproto.TLMessagesGet
 		Updates: []*mtproto.Update{},
 		Users:   []*mtproto.User{},
 		Chats:   []*mtproto.Chat{},
-		Date:    int32(mtproto.Now().Unix()),
+		Date:    int32(time.Now().Unix()),
 		Seq:     0,
 	}).To_Updates()
 	return rUpdates, nil

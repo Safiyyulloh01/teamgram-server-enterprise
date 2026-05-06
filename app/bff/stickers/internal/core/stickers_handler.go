@@ -24,7 +24,7 @@ func (c *StickersCore) MessagesGetStickerSet(in *mtproto.TLMessagesGetStickerSet
 
 func (c *StickersCore) MessagesInstallStickerSet(in *mtproto.TLMessagesInstallStickerSet) (*mtproto.Messages_StickerSetInstallResult, error) {
 	return mtproto.MakeTLMessagesStickerSetInstallResultArchive(&mtproto.Messages_StickerSetInstallResult{
-		Set: mtproto.MakeTLMessagesStickerSetNotModified(&mtproto.Messages_StickerSet{}).To_Messages_StickerSet(),
+		Sets: []*mtproto.StickerSetCovered{},
 	}).To_Messages_StickerSetInstallResult(), nil
 }
 
@@ -133,7 +133,7 @@ func (c *StickersCore) MessagesGetMyStickers(in *mtproto.TLMessagesGetMyStickers
 func (c *StickersCore) MessagesSearchStickers(in *mtproto.TLMessagesSearchStickers) (*mtproto.Messages_FoundStickers, error) {
 	return mtproto.MakeTLMessagesFoundStickers(&mtproto.Messages_FoundStickers{
 		Hash:     0,
-		Stickers: []*mtproto.FoundSticker{},
+		Stickers: []*mtproto.StickerSetCovered{},
 	}).To_Messages_FoundStickers(), nil
 }
 
