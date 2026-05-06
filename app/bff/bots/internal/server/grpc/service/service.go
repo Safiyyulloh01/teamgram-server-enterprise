@@ -6,7 +6,6 @@ import (
 	"github.com/teamgram/proto/mtproto"
 	"github.com/teamgram/teamgram-server/app/bff/bots/internal/core"
 	"github.com/teamgram/teamgram-server/app/bff/bots/internal/svc"
-	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type Service struct {

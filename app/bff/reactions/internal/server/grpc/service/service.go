@@ -11,11 +11,13 @@ import (
 
 type Service struct {
 	svcCtx *svc.ServiceContext
+	logx.Logger
 }
 
 func New(ctx *svc.ServiceContext) *Service {
 	return &Service{
 		svcCtx: ctx,
+		Logger: logx.WithContext(ctx.Ctx()),
 	}
 }
 

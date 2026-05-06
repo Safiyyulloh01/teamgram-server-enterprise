@@ -133,7 +133,7 @@ func (c *StickersCore) MessagesGetMyStickers(in *mtproto.TLMessagesGetMyStickers
 func (c *StickersCore) MessagesSearchStickers(in *mtproto.TLMessagesSearchStickers) (*mtproto.Messages_FoundStickers, error) {
 	return mtproto.MakeTLMessagesFoundStickers(&mtproto.Messages_FoundStickers{
 		Hash:     0,
-		Stickers: []*mtproto.StickerSetCovered{},
+		Stickers: []*mtproto.Document{},
 	}).To_Messages_FoundStickers(), nil
 }
 

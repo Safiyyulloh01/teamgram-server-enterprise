@@ -37,7 +37,7 @@ func (c *ReactionsCore) MessagesGetMessagesReactions(in *mtproto.TLMessagesGetMe
 func (c *ReactionsCore) MessagesGetMessageReactionsList(in *mtproto.TLMessagesGetMessageReactionsList) (*mtproto.Messages_MessageReactionsList, error) {
 	return mtproto.MakeTLMessagesMessageReactionsList(&mtproto.Messages_MessageReactionsList{
 		Count:     0,
-		Reactions: []*mtproto.MessageUserReaction{},
+		Reactions: []*mtproto.MessagePeerReaction{},
 		Users:     []*mtproto.User{},
 		Chats:     []*mtproto.Chat{},
 	}).To_Messages_MessageReactionsList(), nil
