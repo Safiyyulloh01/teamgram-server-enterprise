@@ -306,11 +306,13 @@ func (c *BFFProxyClient) TryReturnFakeRpcResult(ctx context.Context, object mtpr
 	// stories (unblocked — return empty responses)
 	case "TLStoriesGetAllStories":
 		return mtproto.MakeTLStoriesAllStoriesNotModified(&mtproto.Stories_AllStories{
-			Flags: 0,
+			State:       "stories_state",
+			StealthMode: &mtproto.StoriesStealthMode{},
 		}).To_Stories_AllStories(), nil
 	case "TLStoriesGetPeerStories":
 		return mtproto.MakeTLStoriesPeerStories(&mtproto.Stories_PeerStories{
-			Stories: &mtproto.Stories_Stories{
+			Stories: &mtproto.PeerStories{
+				Peer:    &mtproto.Peer{},
 				Stories: []*mtproto.StoryItem{},
 			},
 			Users: []*mtproto.User{},
