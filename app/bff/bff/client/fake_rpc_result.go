@@ -302,6 +302,29 @@ func (c *BFFProxyClient) TryReturnFakeRpcResult(ctx context.Context, object mtpr
 			Authorizations: []*mtproto.WebAuthorization{},
 			Users:          []*mtproto.User{},
 		}).To_Account_WebAuthorizations(), nil
+
+	// stories (unblocked — return empty responses)
+	case "TLStoriesGetAllStories":
+		return mtproto.MakeTLStoriesAllStoriesNotModified(&mtproto.Stories_AllStories{
+			Flags: 0,
+		}).To_Stories_AllStories(), nil
+	case "TLStoriesGetPeerStories":
+		return mtproto.MakeTLStoriesPeerStories(&mtproto.Stories_PeerStories{
+			Stories: &mtproto.Stories_Stories{
+				Stories: []*mtproto.StoryItem{},
+			},
+			Users: []*mtproto.User{},
+		}).To_Stories_PeerStories(), nil
+	case "TLStoriesGetStoriesByID":
+		return mtproto.MakeTLStoriesStories(&mtproto.Stories_Stories{
+			Stories: []*mtproto.StoryItem{},
+			Users:   []*mtproto.User{},
+		}).To_Stories_Stories(), nil
+	case "TLStoriesGetPinnedStories":
+		return mtproto.MakeTLStoriesStories(&mtproto.Stories_Stories{
+			Stories: []*mtproto.StoryItem{},
+			Users:   []*mtproto.User{},
+		}).To_Stories_Stories(), nil
 	}
 
 	logx.WithContext(ctx).Errorf("%s blocked, License key from https://teamgram.net required to unlock enterprise features.", rt.Name())
