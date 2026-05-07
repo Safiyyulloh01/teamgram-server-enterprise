@@ -170,3 +170,13 @@ func (s *Service) StickersChangeSticker(ctx context.Context, in *mtproto.TLStick
 	c := core.New(ctx, s.svcCtx)
 	return c.StickersChangeSticker(in)
 }
+
+func (s *Service) StickersDeleteStickerSet(ctx context.Context, in *mtproto.TLStickersDeleteStickerSet) (*mtproto.Bool, error) {
+	c := core.New(ctx, s.svcCtx)
+	return c.StickersDeleteStickerSet(in)
+}
+
+func (s *Service) StickersRenameStickerSet(ctx context.Context, in *mtproto.TLStickersRenameStickerSet) (*mtproto.Messages_StickerSet, error) {
+	c := core.New(ctx, s.svcCtx)
+	return c.StickersRenameStickerSet(in)
+}
