@@ -15,7 +15,6 @@ type Service struct {
 func New(ctx *svc.ServiceContext) *Service {
 	return &Service{
 		svcCtx: ctx,
-		// Logger removed,
 	}
 }
 
@@ -179,4 +178,9 @@ func (s *Service) StickersDeleteStickerSet(ctx context.Context, in *mtproto.TLSt
 func (s *Service) StickersRenameStickerSet(ctx context.Context, in *mtproto.TLStickersRenameStickerSet) (*mtproto.Messages_StickerSet, error) {
 	c := core.New(ctx, s.svcCtx)
 	return c.StickersRenameStickerSet(in)
+}
+
+func (s *Service) StickersReplaceSticker(ctx context.Context, in *mtproto.TLStickersReplaceSticker) (*mtproto.Messages_StickerSet, error) {
+	c := core.New(ctx, s.svcCtx)
+	return c.StickersReplaceSticker(in)
 }

@@ -15,7 +15,6 @@ type Service struct {
 func New(ctx *svc.ServiceContext) *Service {
 	return &Service{
 		svcCtx: ctx,
-		// Logger removed,
 	}
 }
 
