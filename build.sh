@@ -5,6 +5,9 @@ PWD=`pwd`
 TEAMGRAMAPP=${PWD}"/app"
 INSTALL=${PWD}"/teamgramd"
 
+echo "cleaning go build cache..."
+go clean -cache
+
 echo "build idgen ..."
 cd ${TEAMGRAMAPP}/service/idgen/cmd/idgen
 go build -o ${INSTALL}/bin/idgen
