@@ -170,3 +170,11 @@ func (c *StickersCore) StickersSuggestShortName(in *mtproto.TLStickersSuggestSho
 func (c *StickersCore) StickersChangeSticker(in *mtproto.TLStickersChangeSticker) (*mtproto.Messages_StickerSet, error) {
 	return mtproto.MakeTLMessagesStickerSetNotModified(&mtproto.Messages_StickerSet{}).To_Messages_StickerSet(), nil
 }
+
+func (c *StickersCore) StickersDeleteStickerSet(in *mtproto.TLStickersDeleteStickerSet) (*mtproto.Bool, error) {
+	return mtproto.BoolTrue, nil
+}
+
+func (c *StickersCore) StickersRenameStickerSet(in *mtproto.TLStickersRenameStickerSet) (*mtproto.Messages_StickerSet, error) {
+	return mtproto.MakeTLMessagesStickerSetNotModified(&mtproto.Messages_StickerSet{}).To_Messages_StickerSet(), nil
+}
